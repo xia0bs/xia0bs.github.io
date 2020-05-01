@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!--icon-->
+    
+        <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- meta -->
+    
+    <title>前端面试题考点汇总 | Yanng</title>
+    
+    
+        <meta name="description" content="Yep!">
+    
+
+    <!--Social link-->
+     
+        <meta name="twitter:card" content="summary_large_image " />
+        
+            <meta property="og:type" content="article" />
+        
+        <meta property="og:locale" content="" />
+        <meta property="og:site_name" content="Yanng>" />
+        <meta property="og:title" content="前端面试题考点汇总 | Yanng " />
+        <meta property="og:description" content="Yep! " />
+        <meta property="og:image" content="" />
+     
+
+    <!-- feed -->
+    
+        <link rel="alternate" href="/atom.xml" title="Yanng">
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-cards@0.1/dist/css/style.min.css">
+
+    
+    
+        
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-cards@0.1/dist/css/github.min.css" crossorigin="anonymous" media="none" onload="this.media='all'">
+        
+    
+
+    <!--LaTex-->
+    
+
+     
+
+    
+         
+    
+         
+    
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Yanng" type="application/atom+xml">
+</head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        
+            <a href="/" class="button">
+                <span class="logo__text">
+                    ← Yanng | 首页
+                </span>
+            </a>
+        
+    </div>
+    <div class="header__right">
+         
+    </div>
+</header>
+
+
+            <main class="main">
+    <div class="post-title">
+    <h1 class="post-title__text">
+        前端面试题考点汇总
+    </h1>
+    <div class="post-meta">
+        
+            <a href="/archives/2018/08/" class="button" style="color: #808080;">
+    2018-08-03
+</a>
+        
+        
+            
+ 
+        
+        
+     
+ 
+
+  
+    </div>
+</div>
+<div class="post content-box">
+    <div class="post__header">
+        
+             
+        
+    </div>
+    <div class="post__content">
+        <div class="markdown-body">
+            <h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h4 id="子选择器和后代选择器："><a href="#子选择器和后代选择器：" class="headerlink" title="子选择器和后代选择器："></a>子选择器和后代选择器：</h4><blockquote>
+<p>子选择器：（&gt;）<br>后代选择器：（空格）</p>
+</blockquote>
+<p>区别：&gt; 作用于元素的第一代后代，空格作用于元素的所有后代。</p>
+<h4 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h4><p><code>(a[rel = &quot;external&quot;])</code></p>
+<h4 id="相邻选择器"><a href="#相邻选择器" class="headerlink" title="相邻选择器"></a>相邻选择器</h4><p>(h1 + p)</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h4 id="可继承的样式："><a href="#可继承的样式：" class="headerlink" title="可继承的样式："></a>可继承的样式：</h4><ol>
+<li><p>font-size</p>
+</li>
+<li><p>font-family</p>
+</li>
+<li><p>color</p>
+</li>
+<li><p>text-indent</p>
+</li>
+</ol>
+<h4 id="不可继承的样式："><a href="#不可继承的样式：" class="headerlink" title="不可继承的样式："></a>不可继承的样式：</h4><ol>
+<li><p>border</p>
+</li>
+<li><p>padding</p>
+</li>
+<li><p>margin</p>
+</li>
+<li><p>width</p>
+</li>
+<li><p>height</p>
+</li>
+</ol>
+<h4 id="优先级算法："><a href="#优先级算法：" class="headerlink" title="优先级算法："></a>优先级算法：</h4><ol>
+<li><p>优先级就近原则，同权重情况下样式定义最近者为准;</p>
+</li>
+<li><p>载入样式以最后载入的定位为准;</p>
+</li>
+<li><p>!important &gt;  id &gt; class &gt; tag  </p>
+</li>
+<li><p>important 比 内联优先级高，但内联比 id 要高</p>
+</li>
+</ol>
+<h4 id="CSS3-新增伪类举例："><a href="#CSS3-新增伪类举例：" class="headerlink" title="CSS3 新增伪类举例："></a>CSS3 新增伪类举例：</h4><ul>
+<li><p>p:first-of-type 选择属于其父元素的首个 &lt;p&gt; 元素的每个 &lt;p&gt; 元素。</p>
+</li>
+<li><p>p:last-of-type  选择属于其父元素的最后 &lt;p&gt; 元素的每个 &lt;p&gt; 元素。</p>
+</li>
+<li><p>p:only-of-type  选择属于其父元素唯一的 &lt;p&gt; 元素的每个 &lt;p&gt; 元素。</p>
+</li>
+<li><p>p:only-child    选择属于其父元素的唯一子元素的每个 &lt;p&gt; 元素。</p>
+</li>
+<li><p>p:nth-child(2)  选择属于其父元素的第二个子元素的每个 &lt;p&gt; 元素。</p>
+</li>
+<li><p>:enabled :disabled 控制表单控件的禁用状态。</p>
+</li>
+<li><p>:checked        单选框或复选框被选中。</p>
+</li>
+</ul>
+<h2 id="display-的值及作用："><a href="#display-的值及作用：" class="headerlink" title="display 的值及作用："></a>display 的值及作用：</h2><ol>
+<li><p>block</p>
+</li>
+<li><p>inline-block</p>
+</li>
+<li><p>inline</p>
+</li>
+<li><p>list-item 象块类型元素一样显示，并添加样式列表标记。</p>
+</li>
+<li><p>none：隐藏元素，在页面中不占据空间</p>
+</li>
+</ol>
+<h2 id="position-的值的定位区别："><a href="#position-的值的定位区别：" class="headerlink" title="position 的值的定位区别："></a>position 的值的定位区别：</h2><ol>
+<li><p>absolute 生成绝对定位的元素，相对于 static 定位以外的第一个祖先元素进行定位。</p>
+</li>
+<li><p>fixed 生成固定定位的元素，相对于浏览器窗口进行定位（老 IE 不支持）。</p>
+</li>
+<li><p>relative 生成相对定位的元素，相对于其在普通流中的位置进行定位。</p>
+</li>
+<li><p>static 默认值（静态）。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right z-index 声明）。</p>
+</li>
+<li><p>inherit 规定从父元素继承 position 属性的值。</p>
+</li>
+</ol>
+<h2 id="css3新特性"><a href="#css3新特性" class="headerlink" title="css3新特性"></a>css3新特性</h2><ol>
+<li><p>CSS3 实现圆角（border-radius），阴影（box-shadow）</p>
+</li>
+<li><p>对文字加特效（text-shadow、），线性渐变（gradient），转换（transform）</p>
+</li>
+<li><p>transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);// 旋转, 缩放, 定位, 倾斜</p>
+</li>
+<li><p>增加了更多的 CSS 选择器  多背景 rgba</p>
+</li>
+<li><p>在 CSS3 中唯一引入的伪类是 ::selection.</p>
+</li>
+<li><p>媒体查询，多栏布局</p>
+</li>
+<li><p>border-image</p>
+</li>
+</ol>
+<h3 id="转换-transform"><a href="#转换-transform" class="headerlink" title="转换(transform)"></a>转换(transform)</h3><ol>
+<li>平移</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">transform：translateX（-30px);  水平方向   左右，负正</span><br><span class="line"></span><br><span class="line">transform：translateY（-30px);  垂直方向  正上；负下</span><br><span class="line"></span><br><span class="line">transform：translate（-30px，30px); 斜</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>旋转 ：角度</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform：rotate （180deg）</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>缩放：倍数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">transform：scale</span><br><span class="line"></span><br><span class="line">transform：scaleX</span><br><span class="line"></span><br><span class="line">transform：scaleY</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>斜切：角度</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">transform：skew</span><br><span class="line"></span><br><span class="line">transform：skewX</span><br><span class="line"></span><br><span class="line">transform：skewY</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>过度：对运动过程进行控制</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">transition；all  2s  1s  ease;</span><br><span class="line"></span><br><span class="line">属性名称 持续时间   延迟   运动方式（贝塞尔曲线）</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>阴影</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: 0px  0px  10px   10px  rgba(0,0,0,0.4)</span><br></pre></td></tr></table></figure>
+
+<p>第一个参数：水平方向   正 右； 负 左；  0 左右</p>
+<p>第二个参数： 垂直方向   正上 ；  负下 ；   0  上下</p>
+<p>第三个参数： 迷糊程度  值越大越模糊</p>
+<p>第四个参数：阴影大小</p>
+<p>第五个参数： 阴影颜色</p>
+<p>第六个参数：  内阴影  inset;</p>
+<ol start="7">
+<li>文本阴影</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: 5px 5px 5px #FF0000;</span><br></pre></td></tr></table></figure>
+
+<h3 id="边框图片"><a href="#边框图片" class="headerlink" title="边框图片"></a>边框图片</h3><p>引入图片：<br><code>boder-image-source:url(&#39;&#39;);</code></p>
+<p>设置边框图片的宽度：<br><code>boder-image-width:20px;</code></p>
+<p>切片 九个区域 四个角 四个边 中间 fill：<br><code>boder-image-slice:45;</code></p>
+<p>重复：<br>stretch 拉伸（默认）<br>repeat 重复（不完整）<br>round 重复（完整）<br><code>boder-image-repeat:round;</code></p>
+<h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><h4 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h4><p>添加属性：background-image<br><code>linear-gradient(top,red,yellow);</code><br>第一参数：渐变开始的方向<br>第二参数：开始的颜色<br>第三参数：结束的颜色<br>颜色：关键字，十六进制，rgb，rgba<br>方向：关键字 left top bottom right<br>角度:  0deg<br>均匀的线性渐变<br>不均匀的线形渐变：（百分比 纯色）<br><code>linear-gradient(top,red 30%,yellow);</code><br>重复性渐变：<br><code>repeating-linear-gradient(top,red,yellow 20%);</code></p>
+<h4 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h4><p>添加属性：background-image<br><code>radial-gradient(at 30px 30px,red,yellow);</code><br>第一参数：中心点位置<br>第二参数：开始的颜色<br>第三参数：结束的颜色<br>不均匀径向渐变<br>重复性径向渐变：<br><code>repeating-gradial-gradient(red,yellow 20%);</code></p>
+<h3 id="文本修饰（下划线等）"><a href="#文本修饰（下划线等）" class="headerlink" title="文本修饰（下划线等）"></a>文本修饰（下划线等）</h3><p>上划线:<code>h1 {text-decoration:overline}</code><br>删除线:<code>h2 {text-decoration:line-through}</code><br>下划线:<code>h3 {text-decoration:underline}</code><br>（不支持IE，Chrome，Safari）:<code>h4 {text-decoration:blink}</code></p>
+<h2 id="对BFC规范的理解"><a href="#对BFC规范的理解" class="headerlink" title="对BFC规范的理解"></a>对BFC规范的理解</h2><p>块格式化上下文（Block Formatting Context，BFC）是 Web 页面的可视化 CSS 渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。</p>
+<p>BFC，块级格式化上下文，一个创建了新的 BFC 的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。在同一个 BFC 中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的 margin 会发生折叠。</p>
+<p>W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。</p>
+<h2 id="CSS-sprites"><a href="#CSS-sprites" class="headerlink" title="CSS sprites"></a>CSS sprites</h2><p>CSS Sprites 其实就是把网页中一些背景图片整合到一张图片文件中，再利用 CSS 的 “background-image”，”background-repeat”，”background-position” 的组合进行背景定位，background-position 可以用数字能精确的定位出背景图片的位置。这样可以减少很多图片请求的开销，因为请求耗时比较长；请求虽然可以并发，但是也有限制，一般浏览器都是 6 个。对于未来而言，就不需要这样做了，因为有了 http2。</p>
+<h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><ol>
+<li>&lt;!DOCTYPE&gt; 声明位于文档中的最前面，处于 &lt;html&gt; 标签之前。告知浏览器以何种模式来渲染文档。 </li>
+<li>严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。</li>
+<li>在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。</li>
+<li>DOCTYPE 不存在或格式不正确会导致文档以混杂模式呈现。 <h4 id="DOCTYPE类型"><a href="#DOCTYPE类型" class="headerlink" title="DOCTYPE类型"></a>DOCTYPE类型</h4></li>
+<li>该标签可声明三种 DTD 类型，分别表示严格版本、过渡版本以及基于框架的 HTML 文档。</li>
+<li>HTML 4.01 规定了三种文档类型：Strict、Transitional 以及 Frameset。</li>
+<li>XHTML 1.0 规定了三种 XML 文档类型：Strict、Transitional 以及 Frameset。</li>
+<li>Standards （标准）模式（也就是严格呈现模式）用于呈现遵循最新标准的网页，而 Quirks（包容）模式（也就是松散呈现模式或者兼容模式）用于呈现为传统浏览器而设计的网页。</li>
+</ol>
+<h2 id="HTML-与-XHTML"><a href="#HTML-与-XHTML" class="headerlink" title="HTML 与 XHTML"></a>HTML 与 XHTML</h2><p>最主要的不同：<br>XHTML 元素必须被正确地嵌套。<br>XHTML 元素必须被关闭。<br>标签名必须用小写字母。<br>XHTML 文档必须拥有根元素。</p>
+<h2 id="html-常见兼容性问题"><a href="#html-常见兼容性问题" class="headerlink" title="html 常见兼容性问题"></a>html 常见兼容性问题</h2><ol>
+<li><p>png24 位的图片在 iE6 浏览器上出现背景<br>解决方案：做成 PNG8，也可以引用一段脚本处理.</p>
+</li>
+<li><p>浏览器默认的 margin 和 padding 不同<br>解决方案：加一个全局的 <code>margin:0;padding:0;</code> 来统一。</p>
+</li>
+<li><p>IE6 双边距 bug：在 IE6 下，如果对元素设置了浮动，同时又设置了 margin-left 或 margin-right，margin 值会加倍。<br><code>box float:left; width:10px; margin:0 0 0 10px;</code><br>这种情况之下 IE 会产生 20px 的距离<br>解决方案：在 float 的标签样式控制中加入 _display:inline; 将其转化为行内属性。( _ 这个符号只有 ie6 会识别)</p>
+</li>
+<li><p>渐进识别的方式，从总体中逐渐排除局部。<br>首先，巧妙的使用 “\9” 这一标记，将 IE 游览器从所有情况中分离出来。<br>接着，再次使用 “+” 将 IE8 和 IE7、IE6 分离开来，这样 IE8 已经独立识别。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.bb&#123;</span><br><span class="line">    background-color:#f1ee18; &#x2F;所有识别&#x2F;</span><br><span class="line">    .background-color:#00deff\9; &#x2F;IE6、7、8识别&#x2F;</span><br><span class="line">    +background-color:#a200ff; &#x2F;IE6、7识别&#x2F;</span><br><span class="line">    background-color:#1e0bd1; &#x2F;IE6识别&#x2F; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.IE 下，可以使用获取常规属性的方法来获取自定义属性，也可以使用 getAttribute() 获取自定义属性；Firefox 下, 只能使用 getAttribute() 获取自定义属性<br>解决方法：统一通过 getAttribute() 获取自定义属性<br>6. IE 下，event 对象有 x、y 属性，但是没有 pageX、pageY 属性; Firefox 下，event 对象有 pageX、pageY 属性，但是没有 x、y 属性<br>解决方法：（条件注释）缺点是在 IE 浏览器下可能会增加额外的 HTTP 请求数。<br>7. Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示<br>解决方法：可通过加入 CSS 属性 <code>-webkit-text-size-adjust: none;</code> 解决<br>8. 超链接访问过后 hover 样式就不出现了，被点击访问过的超链接样式不在具有 hover 和 active 了<br>解决方法：改变 CSS 属性的排列顺序 L-V-H-A</p>
+<p><code>a:link {}</code><br><code>a:visited {}</code><br><code>a:hover {}</code><br><code>a:active {}</code></p>
+<ol start="9">
+<li><p>怪异模式问题：漏写 DTD 声明，Firefox 仍然会按照标准模式来解析网页，但在 IE 中会触发怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写 DTD 声明的好习惯。现在可以使用 <a href="">html5</a>(<a href="http://www.w3.org/TR/html5/single-page.html">http://www.w3.org/TR/html5/single-page.html</a>) 推荐的写法：&lt;!DOCTYPE html&gt;</p>
+</li>
+<li><p>上下 margin 重合问题：ie 和 ff 都存在，相邻的两个 div 的 margin-left 和 margin-right 不会重合，但是 margin-top 和 margin-bottom 却会发生重合。<br>解决方法：养成良好的代码编写习惯，同时采用 margin-top 或者同时采用 margin-bottom。</p>
+</li>
+<li><p>ie6 对 png 图片格式支持不好<br>解决方案：引用一段脚本处理</p>
+</li>
+</ol>
+<h2 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h2><p>浮动元素脱离文档流，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留。</p>
+<ol>
+<li><p>使用空标签清除浮动。<br>这种方法是在所有浮动标签后面添加一个空标签 定义 css clear:both. 弊端就是增加了无意义标签。</p>
+</li>
+<li><p>使用 overflow。<br>给包含浮动元素的父标签添加 css 属性 overflow:auto; zoom:1; zoom:1 用于兼容 IE6。可以给父元素设置 overflow：auto 或者 hidden。</p>
+</li>
+<li><p>使用 after 伪对象清除浮动。<br>该方法只适用于非 IE 浏览器。具体写法可参照以下示例。使用中需注意以下几点。一、该方法中必须为需要清除浮动元素的伪对象中设置 height:0，否则该元素会比实际高出若干像素；</p>
+</li>
+</ol>
+<h2 id="IE-8-以下版本的浏览器中的盒模型有什么不同"><a href="#IE-8-以下版本的浏览器中的盒模型有什么不同" class="headerlink" title="IE 8 以下版本的浏览器中的盒模型有什么不同"></a>IE 8 以下版本的浏览器中的盒模型有什么不同</h2><p>IE8 以下浏览器的盒模型中定义的元素的宽高包括内边距和边框</p>
+<h2 id="DOM-操作——怎样添加、移除、移动、复制、创建和查找节点。"><a href="#DOM-操作——怎样添加、移除、移动、复制、创建和查找节点。" class="headerlink" title="DOM 操作——怎样添加、移除、移动、复制、创建和查找节点。"></a>DOM 操作——怎样添加、移除、移动、复制、创建和查找节点。</h2><ol>
+<li><p>创建新节点<br><code>createDocumentFragment() // 创建一个DOM片段</code><br><code>createElement() // 创建一个具体的元素</code><br><code>createTextNode() // 创建一个文本节点</code></p>
+</li>
+<li><p>添加、移除、替换、插入<br><code>appendChild()</code><br><code>removeChild()</code><br><code>replaceChild()</code><br><code>insertBefore() // 在已有的子节点前插入一个新的子节点</code></p>
+</li>
+<li><p>查找<br><code>getElementsByTagName() // 通过标签名称</code><br><code>getElementsByName() // 通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)</code><br><code>getElementById() // 通过元素Id，唯一性</code></p>
+</li>
+</ol>
+<h2 id="html5-有哪些新特性、移除了那些元素？如何处理-HTML5-新标签的浏览器兼容问题？如何区分-HTML-和-HTML5？"><a href="#html5-有哪些新特性、移除了那些元素？如何处理-HTML5-新标签的浏览器兼容问题？如何区分-HTML-和-HTML5？" class="headerlink" title="html5 有哪些新特性、移除了那些元素？如何处理 HTML5 新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？"></a>html5 有哪些新特性、移除了那些元素？如何处理 HTML5 新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</h2><p>新特性：<br>HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。</p>
+<ol>
+<li>拖拽释放 (Drag and drop) API </li>
+<li>语义化更好的内容标签（header,nav,footer,aside,article,section）</li>
+<li>音频、视频 API(audio,video)</li>
+<li>画布 (Canvas) API</li>
+<li>地理 (Geolocation) API</li>
+<li>本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；</li>
+<li>sessionStorage 的数据在浏览器关闭后自动删除</li>
+<li>表单控件，calendar、date、time、email、url、search  </li>
+<li>新的技术 webworker, websocket, Geolocation</li>
+</ol>
+<p>移除的元素：</p>
+<ol>
+<li>纯表现的元素：basefont，big，center，font, s，strike，tt，u；</li>
+<li>对可用性产生负面影响的元素：frame，frameset，noframes；</li>
+</ol>
+<p>支持 HTML5 新标签：</p>
+<ol>
+<li>IE8/IE7/IE6 支持通过 document.createElement 方法产生的标签，可以利用这一特性让这些浏览器支持 HTML5 新标签，浏览器支持新标签后，还需要添加标签默认的样式（当然最好的方式是直接使用成熟的框架、使用最多的是 html5shiv 框架）：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if lt IE 9]&gt; </span><br><span class="line">&lt;script&gt; src&#x3D;&quot;http:&#x2F;&#x2F;html5shiv.googlecode.com&#x2F;svn&#x2F;trunk&#x2F;html5.js&quot;&lt;&#x2F;script&gt; </span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如何区分：<br>DOCTYPE 声明新增的结构元素、功能元素</p>
+<h2 id="iframe-的优缺点？"><a href="#iframe-的优缺点？" class="headerlink" title="iframe 的优缺点？"></a>iframe 的优缺点？</h2><p>优点：</p>
+<ol>
+<li>解决加载缓慢的第三方内容如图标和广告等的加载问题</li>
+<li>Security sandbox</li>
+<li>并行加载脚本</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>iframe 会阻塞主页面的 Onload 事件</li>
+<li>即时内容为空，加载也需要时间</li>
+<li>没有语意</li>
+</ol>
+<h2 id="如何实现浏览器内多个标签页之间的通信"><a href="#如何实现浏览器内多个标签页之间的通信" class="headerlink" title="如何实现浏览器内多个标签页之间的通信?"></a>如何实现浏览器内多个标签页之间的通信?</h2><p>使用本地存储方法 </p>
+<ol>
+<li><p>cookie<br>（1）客户端和服务器端都会请求服务器，性能下降<br>（2）存储限制，4kb<br>（3）页面的 cookie 是共享的 </p>
+</li>
+<li><p>storage<br>只是在客户端使用，不会请求服务器处理, 存储量比较大, 只能存储字符串，非字符串的数据在存储之前会被转换为字符串<br>1). sessionStorage </p>
+<pre><code>临时性的，页面打开有，页面关闭没有 
+数据不共享 </code></pre><p>2).localStorage </p>
+<pre><code>永久性的存储 
+数据共享 </code></pre><p>3).api </p>
+<pre><code>clear（）删除所有值，ff 中没有实现 
+getItem（）根据指定的名字 name 获取对应的值 
+key（index）获得 index 处的值 
+removeItem（name）删除由 name 指定的明值对 
+setItem(name，value)</code></pre></li>
+</ol>
+<h2 id="webSocket-如何兼容低浏览器？"><a href="#webSocket-如何兼容低浏览器？" class="headerlink" title="webSocket 如何兼容低浏览器？"></a>webSocket 如何兼容低浏览器？</h2><p>Adobe Flash Socket 、 ActiveX HTMLFile (IE) 、 基于 multipart 编码发送 XHR 、 基于长轮询的 XHR</p>
+<h2 id="线程与进程的区别"><a href="#线程与进程的区别" class="headerlink" title="线程与进程的区别"></a>线程与进程的区别</h2><p>进程是系统进行资源分配和调度的一个独立单位。线程是进程的一个实体, 是 CPU 调度和分派的基本单位。</p>
+<ol>
+<li>一个程序至少有一个进程, 一个进程至少有一个线程</li>
+<li>线程的划分尺度小于进程，使得多线程程序的并发性高</li>
+<li>另外，进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率</li>
+<li>线程在执行过程中与进程还是有区别的。每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制 </li>
+<li>从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。这就是进程和线程的重要区别</li>
+</ol>
+<h2 id="如何对网站的文件和资源进行优化？"><a href="#如何对网站的文件和资源进行优化？" class="headerlink" title="如何对网站的文件和资源进行优化？"></a>如何对网站的文件和资源进行优化？</h2><p>这道题考察《雅虎军规》</p>
+<ol>
+<li>尽可能减少 http 请求次数，将 css, js, 图片各自合并 </li>
+<li>使用 CDN，降低通信距离 </li>
+<li>添加 Expire/Cache-Control 头 </li>
+<li>启用 Gzip 压缩文件 </li>
+<li>将 css 放在页面最上面 </li>
+<li>将 script 放在页面最下面 </li>
+<li>避免在 css 中使用表达式 </li>
+<li>将 css, js 都放在外部文件中 </li>
+<li>减少 DNS 查询 <ol start="10">
+<li>最小化 css, js，减小文件体积 </li>
+</ol>
+</li>
+<li>避免重定向 </li>
+<li>移除重复脚本 </li>
+<li>配置实体标签 ETag </li>
+<li>使用 AJAX 缓存，让网站内容分批加载，局部更新</li>
+</ol>
+<h2 id="六种减少页面加载时间的方法"><a href="#六种减少页面加载时间的方法" class="headerlink" title="六种减少页面加载时间的方法"></a>六种减少页面加载时间的方法</h2><ol>
+<li>优化图片 </li>
+<li>图像格式的选择（GIF：提供的颜色较少，可用在一些对颜色要求不高的地方） </li>
+<li>优化 CSS（压缩合并 css，如 margin-top, margin-left…) </li>
+<li>网址后加斜杠（如 <a href="http://www.campr.com" target="_blank" rel="noopener">www.campr.com</a> / 目录，会判断这个目录是什么文件类型，或者是目录。） </li>
+<li>标明高度和宽度（如果浏览器没有找到这两个参数，它需要一边下载图片一边计算大小，如果图片很多，浏览器需要不断地调整页面。这不但影响速度，也影响浏览体验。<br> 当浏览器知道了高度和宽度参数后，即使图片暂时无法显示，页面上也会腾出图片的空位，然后继续加载后面的内容。从而加载时间快了，浏览体验也更好了） </li>
+<li>减少 http 请求（合并文件，合并图片）</li>
+</ol>
+<h2 id="你都使用哪些工具来测试代码的性能？（暂弃）"><a href="#你都使用哪些工具来测试代码的性能？（暂弃）" class="headerlink" title="你都使用哪些工具来测试代码的性能？（暂弃）"></a>你都使用哪些工具来测试代码的性能？（暂弃）</h2><ol>
+<li>Profiler</li>
+<li>JSPerf（<a href="http://jsperf.com/nexttick-vs-setzerotimeout-vs-settimeout）" target="_blank" rel="noopener">http://jsperf.com/nexttick-vs-setzerotimeout-vs-settimeout）</a></li>
+<li>Dromaeo</li>
+</ol>
+<h2 id="什么是-FOUC（无样式内容闪烁）？你如何来避免-FOUC？"><a href="#什么是-FOUC（无样式内容闪烁）？你如何来避免-FOUC？" class="headerlink" title="什么是 FOUC（无样式内容闪烁）？你如何来避免 FOUC？"></a>什么是 FOUC（无样式内容闪烁）？你如何来避免 FOUC？</h2><blockquote>
+<p>FOUC - Flash Of Unstyled Content 文档样式闪烁</p>
+</blockquote>
+<p><code>&lt;style type=&quot;text/css&quot; media=&quot;all&quot;&gt;@import &quot;../fouc.css&quot;;&lt;/style&gt;</code><br>而引用 CSS 文件的 @import 就是造成这个问题的罪魁祸首。IE 会先加载整个 HTML 文档的 DOM，然后再去导入外部的 CSS 文件，因此，在页面 DOM 加载完成到 CSS 导入完成中间会有一段时间页面上的内容是没有样式的，这段时间的长短跟网速，电脑速度都有关系。<br>解决方法简单的出奇，只要在 &lt;head&gt; 之间加入一个 &lt; link &gt; 或者 &lt; script &gt; 元素就可以了。</p>
+
+        </div>
+    </div>
+    
+        
+    <div class="post__license">
+        <p>
+            <strong>本文作者：ChrAlpha</strong>
+        </p>
+        
+            <p>
+                <strong>
+                    <p>文章默认使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 协议进行许可，使用时请注意遵守协议。</p>
+
+                </strong>
+            </p>
+        
+        
+            <p>
+                <strong>
+                    本文链接：
+                </strong>
+                <a href="https://blog.yanng.io/2018/08/03/%E7%89%9B%E5%AE%A2%E9%9D%A2%E8%AF%95%E9%A2%98%E6%89%8B%E8%AE%B0/">https://blog.yanng.io/2018/08/03/%E7%89%9B%E5%AE%A2%E9%9D%A2%E8%AF%95%E9%A2%98%E6%89%8B%E8%AE%B0/</a>
+            </p>
+        
+    </div>
+ 
+    
+    
+        <div class="post-meta post-footer__meta">
+    <p>
+        最后更新于：2018-09-01
+    </p>
+</div> 
+    
+    
+        <div class="post-cats post-card__cats">
+    
+</div>
+
+<div class="post-tags post-card__tags">
+    
+        <a href="/tags/%E5%89%8D%E7%AB%AF/" class="post-tags__link button"># 前端</a>
+    
+</div> 
+     
+</div>
+<br>
+
+
+</main>
+<footer class="footer">
+     
+
+
+     
+  
+    
+        
+            <p>Copyright © 2020 </p>
+
+        
+            <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank" rel="noopener">Cards</a></p>
+
+        
+    
+</footer>
+
+
+        </div>
+        <!-- lazyload -->
+
+    
+        <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@latest/dist/lazyload.min.js"></script>
+    
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazyload",
+            threshold: 0
+        };
+    </script>
+
+
+ 
+
+ 
+
+ 
+
+  
+
+<!-- jQuery -->
+ 
+
+<!-- fancybox -->
+ 
+
+<!-- back to top -->
+ 
+
+
+
+    </body>
+</html>

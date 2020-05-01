@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!--icon-->
+    
+        <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- meta -->
+    
+    <title>JavaScript面试题/考点/解答（持续更新中...） | Yanng</title>
+    
+    
+        <meta name="description" content="Yep!">
+    
+
+    <!--Social link-->
+     
+        <meta name="twitter:card" content="summary_large_image " />
+        
+            <meta property="og:type" content="article" />
+        
+        <meta property="og:locale" content="" />
+        <meta property="og:site_name" content="Yanng>" />
+        <meta property="og:title" content="JavaScript面试题/考点/解答（持续更新中...） | Yanng " />
+        <meta property="og:description" content="Yep! " />
+        <meta property="og:image" content="" />
+     
+
+    <!-- feed -->
+    
+        <link rel="alternate" href="/atom.xml" title="Yanng">
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-cards@0.1/dist/css/style.min.css">
+
+    
+    
+        
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-cards@0.1/dist/css/github.min.css" crossorigin="anonymous" media="none" onload="this.media='all'">
+        
+    
+
+    <!--LaTex-->
+    
+
+     
+
+    
+         
+    
+         
+    
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Yanng" type="application/atom+xml">
+</head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        
+            <a href="/" class="button">
+                <span class="logo__text">
+                    ← Yanng | 首页
+                </span>
+            </a>
+        
+    </div>
+    <div class="header__right">
+         
+    </div>
+</header>
+
+
+            <main class="main">
+    <div class="post-title">
+    <h1 class="post-title__text">
+        JavaScript面试题/考点/解答（持续更新中...）
+    </h1>
+    <div class="post-meta">
+        
+            <a href="/archives/2018/08/" class="button" style="color: #808080;">
+    2018-08-13
+</a>
+        
+        
+            
+ 
+        
+        
+     
+ 
+
+  
+    </div>
+</div>
+<div class="post content-box">
+    <div class="post__header">
+        
+             
+        
+    </div>
+    <div class="post__content">
+        <div class="markdown-body">
+            <h2 id="变量类型和计算"><a href="#变量类型和计算" class="headerlink" title="变量类型和计算"></a>变量类型和计算</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><ul>
+<li>js中使用typeof能得到哪些类型</li>
+<li>何时使用 === 何时使用 ==</li>
+<li>js中有哪些内置函数</li>
+<li>js中变量按照存储方式区分为哪些类型，并描述其特点</li>
+<li>如何理解JSON</li>
+</ul>
+<h3 id="考点："><a href="#考点：" class="headerlink" title="考点："></a>考点：</h3><h4 id="值类型vs引用类型"><a href="#值类型vs引用类型" class="headerlink" title="值类型vs引用类型"></a>值类型vs引用类型</h4><p>eg.<br>值类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 100</span><br><span class="line">	&#39;&#39;var b &#x3D; a</span><br><span class="line">	&#39;&#39;a &#x3D; 200</span><br><span class="line">	&#39;&#39;console.log(b) </span><br><span class="line">	&#x2F;&#x2F;100</span><br></pre></td></tr></table></figure>
+
+<p>引用类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; &#123;age:20&#125;</span><br><span class="line">	var b &#x3D; a</span><br><span class="line">	b.age &#x3D; 21</span><br><span class="line">	console.log(a.age) </span><br><span class="line">	&#x2F;&#x2F;21</span><br></pre></td></tr></table></figure>
+
+<h4 id="typeof-运算符详解"><a href="#typeof-运算符详解" class="headerlink" title="typeof 运算符详解"></a>typeof 运算符详解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typeof undefined &#x2F;&#x2F;undefined</span><br><span class="line">typeof &#96;&#39;abc&#39;&#96; &#x2F;&#x2F;string</span><br><span class="line">typeof 123 &#x2F;&#x2F;bumber</span><br><span class="line">typeof true &#x2F;&#x2F;boolean</span><br><span class="line">typeof &#96;&#123;&#125;&#96; &#x2F;&#x2F;object</span><br><span class="line">typeof &#96;[]&#96; &#x2F;&#x2F;object(array)</span><br><span class="line">typeof null &#x2F;&#x2F;object</span><br><span class="line">typeof console.log &#x2F;&#x2F;function</span><br></pre></td></tr></table></figure>
+
+<h4 id="变量计算-强制类型转换"><a href="#变量计算-强制类型转换" class="headerlink" title="变量计算 - 强制类型转换"></a>变量计算 - 强制类型转换</h4><ul>
+<li>字符串拼接</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 100 + 10  &#x2F;&#x2F;110</span><br><span class="line">	var b &#x3D;100 + &#39;10&#39;  &#x2F;&#x2F;&#39;10010&#39;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>==运算符</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">100 &#x3D;&#x3D; &#39;100&#39; &#x2F;&#x2F;true</span><br><span class="line">	0 &#x3D;&#x3D; &#39; &#39; &#x2F;&#x2F;true</span><br><span class="line">	null &#x3D;&#x3D; undefined &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+<ul>
+<li>if语句</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; true </span><br><span class="line">	if(a)&#123;</span><br><span class="line">	&#x2F;&#x2F;.....</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	var b &#x3D;100</span><br><span class="line">	if(b)&#123;</span><br><span class="line">	&#x2F;&#x2F;.....</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	var c &#x3D; &#39; &#39;</span><br><span class="line">	if(c)&#123;</span><br><span class="line">	&#x2F;&#x2F;.....</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>逻辑运算</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(10&amp;&amp;0) &#x2F;&#x2F;0</span><br><span class="line">	console.log(&#39; &#39;||&#39;abc&#39;) &#x2F;&#x2F;&#39;abc&#39;</span><br><span class="line">	console.log(!window.abc) &#x2F;&#x2F;true</span><br><span class="line">	&#x2F;&#x2F;判断一个变量会被当做 true 还是 false</span><br><span class="line">	var a &#x3D; 100</span><br><span class="line">	console.log(!!a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h3><ul>
+<li><p>js中使用typeof能得到哪些类型？<br>如上。</p>
+</li>
+<li><p>何时使用 === 何时使用 ==<br>  if (obj.a==null){<br>  //这里是相当于obj.a===null || obj.a === undefined，简写形式<br>  //这是jquery源码中推荐的写法<br>  }</p>
+</li>
+<li><p>js中有哪些内置函数——数据封装类对象</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Object</span><br><span class="line">Array</span><br><span class="line">Boolean</span><br><span class="line">Number</span><br><span class="line">String</span><br><span class="line">Function</span><br><span class="line">Data</span><br><span class="line">RegExp</span><br><span class="line">Error</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>js中变量按照存储方式区分为哪些类型，并描述其特点</li>
+</ul>
+<ol>
+<li>值类型（单纯赋值）</li>
+<li>引用类型（指针指向）<br>特点：如上。</li>
+</ol>
+<ul>
+<li>如何理解JSON<br>只不过是一个JS对象而已</li>
+</ul>
+<p>对象转化成字符串：<br>    JSON.stringify({a:10,b:20})<br>字符串转化成对象：<br>    JSON.parse(‘{“a”:10,”b”:20}’)</p>
+
+        </div>
+    </div>
+    
+        
+    <div class="post__license">
+        <p>
+            <strong>本文作者：ChrAlpha</strong>
+        </p>
+        
+            <p>
+                <strong>
+                    <p>文章默认使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 协议进行许可，使用时请注意遵守协议。</p>
+
+                </strong>
+            </p>
+        
+        
+            <p>
+                <strong>
+                    本文链接：
+                </strong>
+                <a href="https://blog.yanng.io/2018/08/13/js%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%A2%98%E7%9B%AE-%E8%80%83%E7%82%B9-%E8%A7%A3%E7%AD%94%E6%89%8B%E8%AE%B0/">https://blog.yanng.io/2018/08/13/js%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98-%E9%A2%98%E7%9B%AE-%E8%80%83%E7%82%B9-%E8%A7%A3%E7%AD%94%E6%89%8B%E8%AE%B0/</a>
+            </p>
+        
+    </div>
+ 
+    
+    
+        <div class="post-meta post-footer__meta">
+    <p>
+        最后更新于：2018-09-01
+    </p>
+</div> 
+    
+    
+        <div class="post-cats post-card__cats">
+    
+</div>
+
+<div class="post-tags post-card__tags">
+    
+        <a href="/tags/%E5%89%8D%E7%AB%AF/" class="post-tags__link button"># 前端</a>
+    
+</div> 
+     
+</div>
+<br>
+
+
+</main>
+<footer class="footer">
+     
+
+
+     
+  
+    
+        
+            <p>Copyright © 2020 </p>
+
+        
+            <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank" rel="noopener">Cards</a></p>
+
+        
+    
+</footer>
+
+
+        </div>
+        <!-- lazyload -->
+
+    
+        <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@latest/dist/lazyload.min.js"></script>
+    
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazyload",
+            threshold: 0
+        };
+    </script>
+
+
+ 
+
+ 
+
+ 
+
+  
+
+<!-- jQuery -->
+ 
+
+<!-- fancybox -->
+ 
+
+<!-- back to top -->
+ 
+
+
+
+    </body>
+</html>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!--icon-->
+    
+        <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- meta -->
+    
+    <title>深入理解 ES6 | Yanng</title>
+    
+    
+        <meta name="description" content="Yep!">
+    
+
+    <!--Social link-->
+     
+        <meta name="twitter:card" content="summary_large_image " />
+        
+            <meta property="og:type" content="article" />
+        
+        <meta property="og:locale" content="" />
+        <meta property="og:site_name" content="Yanng>" />
+        <meta property="og:title" content="深入理解 ES6 | Yanng " />
+        <meta property="og:description" content="Yep! " />
+        <meta property="og:image" content="" />
+     
+
+    <!-- feed -->
+    
+        <link rel="alternate" href="/atom.xml" title="Yanng">
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-cards@0.1/dist/css/style.min.css">
+
+    
+    
+        
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-cards@0.1/dist/css/github.min.css" crossorigin="anonymous" media="none" onload="this.media='all'">
+        
+    
+
+    <!--LaTex-->
+    
+
+     
+
+    
+         
+    
+         
+    
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Yanng" type="application/atom+xml">
+</head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        
+            <a href="/" class="button">
+                <span class="logo__text">
+                    ← Yanng | 首页
+                </span>
+            </a>
+        
+    </div>
+    <div class="header__right">
+         
+    </div>
+</header>
+
+
+            <main class="main">
+    <div class="post-title">
+    <h1 class="post-title__text">
+        深入理解 ES6
+    </h1>
+    <div class="post-meta">
+        
+            <a href="/archives/2018/12/" class="button" style="color: #808080;">
+    2018-12-12
+</a>
+        
+        
+            
+    &nbsp;·&nbsp;<a href="/categories/%E5%89%8D%E7%AB%AF/" class="button">前端</a>
+
+ 
+        
+        
+     
+ 
+
+  
+    </div>
+</div>
+<div class="post content-box">
+    <div class="post__header">
+        
+             
+        
+    </div>
+    <div class="post__content">
+        <div class="markdown-body">
+            <blockquote>
+<p>本文篇幅较长，有兴趣的可以先收藏再看。本文将重要的 ES6 特性介绍了一遍，并且详细解释了一些重难点。</p>
+</blockquote>
+<h2 id="let-amp-amp-const"><a href="#let-amp-amp-const" class="headerlink" title="let &amp;&amp; const"></a>let &amp;&amp; const</h2><p><code>let</code> 与 <code>var</code> 的声明用法相同，但是多了一个临时死区（Temporal Distonrtion Zone）的概念。</p>
+<pre><code>console.log(a) // -&gt; undefined
+var a = 1
+console.log(b) // -&gt; Uncaught ReferenceError: b is not defined
+let b = 1</code></pre><p>可以发现在声明前使用 <code>let</code> 声明的变量会导致报错，这解决了 JS 很多奇怪的问题。并且使用 <code>let</code> 会生成一个块级作用域，作用域外不能访问该变量。</p>
+<pre><code>{
+  let a = 1
+  var b = 1
+}
+console.log(b) // -&gt; 1
+console.log(a) //  -&gt; Uncaught ReferenceError: b is not defined</code></pre><p>在 JS 中，声明变量都会提升，不论用什么关键字声明。当使用 <code>let</code> 时变量也会被提升至块级作用域的顶部，但是只提升声明，不提升初始化。并且会产生临时死区，该区域会存放变量，直到执行过声明语句后，方可使用该变量。</p>
+<p>在循环中 <code>let</code> 会与前面有些不同，每次迭代都会产生一个新的变量，并用之前的值初始化，如何理解这句话呢，请看以下代码。</p>
+<pre><code>for(let i = 0; i &lt; 10; i++) {
+    console.log(i) // -&gt; 输入 0 - 9
+}
+// 上面的循环代码可以这样看
+{ // 形成块级作用域
+    let i = 0
+    {
+        let ii = i
+        console.log(ii)
+    }
+    i++
+    {
+        let ii = i
+        console.log(ii)
+    }
+    i++
+    {
+        let ii = i
+        console.log(ii)
+    }
+    ...
+}</code></pre><p><code>const</code> 与 <code>let</code> 基本类似，只是用 <code>const</code> 声明必须赋值，并且不得修改绑定，什么意思呢，请看代码。</p>
+<pre><code>const a = 1
+a = 2 // -&gt; Uncaught TypeError: Assignment to constant variable
+// but
+const b = { a: 1 }
+b.a = 2 // 起效</code></pre><p>当然了，有办法让这个不能改变</p>
+<pre><code>const b = Object.freeze({ a: 1 })
+b.a = 2 // 没有报错，但是 b.a 没有被改变</code></pre><p>但是 <code>Object.freeze</code> 只能在这里有效，对于数组这些可以看看这个<a href="https://github.com/sebmarkbage/ecmascript-immutable-data-structures" target="_blank" rel="noopener">提案</a>。</p>
+<blockquote>
+<p>这两个新的声明方式在全局作用域下不会自动加上 window</p>
+</blockquote>
+<h2 id="字符串相关"><a href="#字符串相关" class="headerlink" title="字符串相关"></a>字符串相关</h2><h3 id="部分新增的字符串函数"><a href="#部分新增的字符串函数" class="headerlink" title="部分新增的字符串函数"></a>部分新增的字符串函数</h3><pre><code>let string = &apos;startend&apos;
+string.includes(&apos;a&apos;) // -&gt; true 是否包含
+string.endsWith(&apos;end&apos;) // -&gt; true 是否由 end 结尾
+string.startsWith(&apos;start&apos;) // -&gt; true 是否由 start 开头</code></pre><h3 id="模板字面量"><a href="#模板字面量" class="headerlink" title="模板字面量"></a>模板字面量</h3><p>很棒的新功能，解决了之前很多麻烦的写法。</p>
+<pre><code>// 语法就是 `` 代替之前的引号，在 `` 中使用引号不需要转义
+let s = `it&apos;s string`</code></pre><p>多行字符串</p>
+<pre><code>// 这样在语法中就可以换行了
+let s = `start \
+end`
+// 注意在模板字面量中的任何空白符都是起效的
+let s = `start \
+    end` // -&gt;  start     end</code></pre><p>占位符和标签模板</p>
+<pre><code>let s = &apos;string&apos;
+let message = `start${s}` // -&gt; startstring
+// ${} 就是占位符语法，可以更简便的实现字符串插入
+
+// 定义一个 tag 函数，然后直接在 `` 前使用就可以
+let m = tag`s${s}e${message}`
+// strings 是一个数组，value 是模板字面量中所有的占位符的值
+function tag(strings, ...value) {
+  // -&gt; [&apos;s&apos;, &apos;e&apos;, &apos;&apos;]
+  console.log(strings)
+  // -&gt; [&apos;string&apos;, &apos;startstring&apos;]
+  console.log(value)
+}
+// 上面的 ...value 也是 ES6新出的扩展语句，在这里代表不定参数的写法，用于替换 arguments
+// 不定参数使用上也是有限制的，必须放在所有参数的末尾，并且在每个函数中只能声明一次
+// 扩展语句和 arguments 区别就是代表了 strings 参数后面的所有参数
+// 除了上面的写法，还可以用于展开可以迭代(有Symbol.iterator属性)的对象
+let array = [1, 2, 3]
+console.log(...array)
+// 该语法可以解决之前很多地方只能传入单个参数，只能使用 apply 解决的问题
+Array.prototype.unshift
+  .apply([4, 5], array) // -&gt; [1, 2, 3, 4, 5]
+  [
+    // 现在可以直接这样写
+    (4, 5)
+  ].unshift(...array)
+// 展开运算不受不定参数的条件限制，可以一起用</code></pre><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>ES6 允许给函数增加默认参数</p>
+<pre><code>function fn(a = 1, b = 2) {}
+// 默认值也可以通过调用函数获得，注意必须调用函数
+function fn1(a = 1, b = fn()) {}</code></pre><h3 id="新增函数内部方法"><a href="#新增函数内部方法" class="headerlink" title="新增函数内部方法"></a>新增函数内部方法</h3><p>在 JS 中，函数有多种用法，可以直接调用，也可以通过 <code>new</code> 构造函数。</p>
+<p>在 ES6 中，函数内部新增了 [[Call]] 和 [[Construct]] 两个方法。后者会在使用 <code>new</code> 构造函数时执行，其他情况会执行前者方法。</p>
+<p>当一个函数必须使用 <code>new</code> 构造时，你可以使用这个新属性 <code>new.target</code> 判断</p>
+<pre><code>// new.target 只能在函数中使用
+function Fn() {
+    if (typeof new.target === &apos;underfined&apos;) { throw ....... }
+}</code></pre><h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>这个特性真的很棒，先介绍下他的几种语法</p>
+<pre><code>// 最简单的写法，只有一个参数，单行表达式
+value =&gt; value
+// 多个参数需要使用小括号包裹
+(v1, v2) =&gt; v2 + v1
+// 没有参数需要使用小括号包裹
+() =&gt; &quot;balabala&quot;
+// 多行表达式需要大括号包裹
+(v1, v2) =&gt; {
+    return v1 + v2
+}
+// 返回一个对象，需要用小括号包裹
+() =&gt; ({a: 1})
+// 立即执行函数，注意普通的立即执行函数的小括号包裹在最外面，箭头函数不需要
+((value) =&gt; value)(&quot;balabala&quot;)</code></pre><p>箭头函数和普通函数区别还是蛮大的，说几个常用的</p>
+<ul>
+<li>没有 <code>this</code>，不能改变 <code>this</code> 绑定</li>
+<li>不能通过 <code>new</code> 调用，当然也没有原型</li>
+<li>没有 <code>arguments</code> 对象，不能有相同命名参数</li>
+</ul>
+<p>箭头函数虽然没有 <code>this</code> ，但是还是可以在内部使用 <code>this</code> 的</p>
+<ul>
+<li><p><code>this</code> 的绑定取决于定义函数时的上下文环境</p>
+</li>
+<li><p>一旦函数调用，任何改变 <code>this</code> 的方法都无效</p>
+<p>  // let 有个细节<br>  let x = 11111<br>  let a = {</p>
+<pre><code>x: 1,
+init() {
+    // 箭头函数的 this 取决于 init，所以可以打印出 1
+    document.addEventListener(&apos;click&apos;, () =&gt; console.log(this.x))
+},
+allowInit: () =&gt; {
+    // allowInit 直接是个箭头函数，所以这时的 this 变成了 window
+    // 但是并不会打印出 11111，忘了 let 的一个细节的可以回到上面看看
+    console.log(this.x))
+}
+otherInit() {
+    // 普通函数的 this 取决于调用函数的位置，this 指向 document
+    // 如果想打印出 x，可以使用 bind
+    document.addEventListener(&apos;click&apos;, function() {
+        console.log(this.x)
+    })
+}</code></pre><p>  }<br>  a.init() // -&gt; 1<br>  a.allowInit() // -&gt; undefined<br>  a.otherInit() // -&gt; undefined</p>
+</li>
+</ul>
+<h2 id="对象相关"><a href="#对象相关" class="headerlink" title="对象相关"></a>对象相关</h2><pre><code>let a = 1
+// 当 key 和 value 名字相同时可以简写
+let b = { a }
+// 对象中的方法也可以简写
+let a = {
+  init() {},
+}
+// 对象属性名也可以计算
+let name = &apos;name&apos;
+b[name + &apos;1&apos;] = 2 // === b[&apos;name1&apos;] = 2</code></pre><p>ES6 也新增了几个对象方法</p>
+<pre><code>Object.is(NaN, NaN) // -&gt;true
+// 结果基本于 === 相似，除了 NaN 和 +0 -0
+Object.is(+0, -0) // -&gt; false
+let o = { a: 1 }
+let a = Object.assign({}, o) // -&gt; {a: 1}
+// 第一个参数为目标参数，后面的参数是不定的，参数属性名如果有重复，后面的会覆盖之前的</code></pre><p>原型相关</p>
+<p>ES6 之前改变对象原型很麻烦</p>
+<pre><code>let obj = { a: 1 }
+let obj1 = { a: 2 }
+// 已 obj 为原型
+let a = Object.create(obj)
+// 改变 a 的原型为 obj1
+Object.setPrototypeOf(a, obj1) // a.a === 2</code></pre><p>访问原型</p>
+<pre><code>Object.getPrototypeOf(a) // 访问原型
+// ES6 中可以直接通过 super 代表原型
+let a = {
+  init() {
+    return &apos;Hello&apos;
+  },
+}
+let b = {
+  init() {
+    // 不能在 super 之前访问 this
+    return super.init() + &apos;World&apos;
+  },
+}
+Object.setPrototypeOf(b, a)
+b.init() // -&gt; &apos;HelloWorld&apos;</code></pre><p>但是 super 不是每个函数都可以使用的，只有在函数的简写语法中方可使用。因为在 ES6 中新增了一个函数内部属性 [[HomeObject]]，这个属性决定了是否可以访问到 <code>super</code>。首先在该属性上调用 <code>Object.getPrototypeOf(绑定的对象)</code>，然后找到原型中的同名函数，在设置 <code>this</code> 绑定并且调用函数，其实就是一个新增的语法糖。</p>
+<h2 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h2><p>该特性可以用于对象，数组和传参。</p>
+<pre><code>let obj = { a: 1, b: 2 }
+// 对象解构使用 {}，数组解构使用 []，因为这里是对象解构，c 不是 obj 的属性，所以 underfined
+// 数组解构中，如果需要解构的变量大于数组索引，多出来的变量也是 undefined
+// 解构必须赋值，否则报错。不能 let {a, b, c};
+// 赋值不能为 null 或者 undefined，会报错
+let { a, b, c } = obj
+// 等于 let a = obj.a，可以看做之前介绍的对象属性简写
+console.log(a, b, c)(
+  // -&gt; 1, 2, underfined
+  // 如果已经声明了变量并且想使用解构，必须最外面是小括号
+  ({ a, b } = obj)
+)
+// 如果不想使用 obj 中的对象名，又想使用解构赋值
+let { x: a } = obj
+// 如果想使用默认值
+let { a = 2, c = 3 } = obj // -&gt; 1, 3
+// 因为 a 是 obj 中的对象，所以默认值被覆盖
+// 解构也可以嵌套
+let obj = { data: { code: 1 }, message: [1, 2] }
+// 这个写法在 json 中很好用
+// 注意在这个写法中，data 和 message 都是指代了 obj 的属性，并没有被声明变量
+let {
+  data: { code },
+  message: [a],
+} = obj
+console.log(code, a)
+// 数组解构和对象解构基本相似，并且简单多了
+let message = [1, 2, 3, 4]
+// 因为数组取值只能索引取，所以想跳过某几个索引，就用逗号代替
+// 同样，数组解构也可以使用默认值和嵌套解构，和对象解构一模一样就不赘述了
+let [a, , b] = message // -&gt; 1, 3
+// 在上面章节介绍了扩展语法，同样也可以使用在数组解构中
+// 可以看到 b 变成了一个数组
+let [a, ...b] = message // -&gt; 1, [2, 3, 4]
+// 传参使用解构可以让要传的参数更加清晰
+function fn(name, { key, value }) {
+  console.log(name, key, value)
+}
+// 使用，注意：传参解构必须起码传入一个值，否则报错
+fn(1, { key: 2, value: 3 })
+// 因为传参解构类似以下写法
+function fn(name, { key, value }) {
+  let { key, value } = null // 这个上面讲过不能这样写
+}</code></pre><h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><p>ES6 新出的第六个原始类型。多用于避免代码冲突，作为一个私有属性使用，不会被属性遍历出来。可以使用 <code>Object.getOwnPropertySymbols()</code> 检索 Symbol 属性。</p>
+<h3 id="创建和使用"><a href="#创建和使用" class="headerlink" title="创建和使用"></a>创建和使用</h3><pre><code>// 创建
+let a = Symbol()
+// 更推荐这种写法，可以更加明确这个Symbol的用途
+// 并且有函数可以通过这个字符串取到相应的Symbol
+let b = Symbol(&apos;is b&apos;)
+// 使用，一般作为可计算属性使用
+let a = {}
+let b = Symbol(&apos;is b&apos;)
+a[b] = 1
+// 可以在全局注册表中共享同一个 Symbol，但不推荐使用
+// 不存在 is a 会自动创建
+let a = Symbol.for(&apos;is a&apos;)</code></pre><h3 id="暴露内部操作"><a href="#暴露内部操作" class="headerlink" title="暴露内部操作"></a>暴露内部操作</h3><p>Symbol 中预定义了一些 well-know Symbol，这些 Symbol 定义了一些语言的内部实现</p>
+<ul>
+<li>Symbol.hasinstance，用于执行 <code>instanceof</code> 时检测对象的继承信息</li>
+<li>Symbol.isConcatSpreadable，布尔值，用于判断当使用 <code>concat</code> 函数时是否将数组展开</li>
+<li>Symbol.iterator，迭代器，后面会讲到</li>
+<li>Symbol.match，Symbol.replace，Symbol.search，Symbol.split，字符串相关方法的对应内部实现</li>
+<li>Symbol.toPrimitive，返回对象原始值</li>
+<li>Symbol.toStringTag，调用 <code>toString</code></li>
+</ul>
+<h2 id="Set-和-Map"><a href="#Set-和-Map" class="headerlink" title="Set 和 Map"></a>Set 和 Map</h2><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>Set 是新增的无重复的有序集合，多用于集合去重或者判断集合中是否含有某个元素。</p>
+<pre><code>// 创建
+let set = new Set()
+// 添加元素
+set.add(1)
+set.add(&apos;1&apos;)
+// 重复的元素不会被添加
+set.add(1)
+// 判断是否包含元素
+set.has(1) // -&gt; true
+// 判断长度
+set.size() // -&gt; 2
+// 删除某个元素
+set.delete()
+// 移除所有元素
+set.clear()</code></pre><h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p>Map 是新增的有序键值对列表，键值可以是任何类型。</p>
+<pre><code>// 创建
+let map = new Map()
+// 设置键值对
+map.set(&apos;year&apos;, &apos;2017&apos;)
+map.set({}, &apos;obj&apos;)
+// 取值
+map.get(&apos;year&apos;) // -&gt; &apos;2017&apos;
+// 判断是否有该键值
+map.has(&apos;year&apos;) // -&gt; true
+// 获得长度
+map.size() // -&gt; 2
+// 删除某个键值
+map.delete(&apos;year&apos;)
+// 移除所有键值
+map.clear()</code></pre><h2 id="迭代器和-Generator-函数"><a href="#迭代器和-Generator-函数" class="headerlink" title="迭代器和 Generator 函数"></a>迭代器和 Generator 函数</h2><h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>顾名思义，用来迭代的。之前介绍过 <code>Symbol.iterator</code>，可以迭代的对象都有这个属性，包括数组，Set，Map，字符串和 NodeList。ES6 新增的 <code>for-of</code> 就用到了迭代器的功能，但是默认只有上面这些对象能使用。</p>
+<pre><code>let a = [1, 2]
+for (let value of a) {
+  console.log(value) // -&gt; 1, 2
+}
+// 上面的代码其实就是调用了数组的默认迭代器
+let iterator = a[Symbol.iterator]()
+// 当调用 next 时会输出这次迭代的 value 和是否迭代完成
+console.log(iterator.next()) // {value: 1, done: false}
+console.log(iterator.next()) // {value: 2, done: false}
+// 已经没元素可以迭代了
+console.log(iterator.next()) // {value: undefined, done: true}
+// 数组的默认迭代器只会输出 value，如果想同时输出索引的话
+// 这里可以使用新特性数组解构 let [index, value]
+for (let value of a.entries()) {
+  console.log(value) // -&gt; [0, 1]   [1, 2]
+}</code></pre><p>对于自己创建的对象都是不可迭代的，当然我们也可以让他变成迭代的</p>
+<pre><code>let a = {
+  array: [],
+  // 这是一个 Generator 函数，马上就会讲到
+  *[Symbol.iterator]() {
+    for (let item in this.array) {
+      yield item
+    }
+  },
+}
+a.array.push(...[1, 2, 3])
+for (let item of a) {
+  console.log(item)
+}</code></pre><h3 id="Generator-函数"><a href="#Generator-函数" class="headerlink" title="Generator 函数"></a>Generator 函数</h3><p>用于异步编程。该函数可以暂停和恢复执行，和同步写法很像。</p>
+<pre><code>// 星号表示这是一个 Generator 函数
+function* gen() {
+  // 第一次 next 只执行到等号右边
+  let first = yield 1
+  // 第二次 next 执行 let first = 和 yield 2
+  let second = yield 2
+  // 不执行接下来的 next 就卡在上一步了
+  let thrid = yield 3
+}
+let g = gen()
+g.next() // -&gt; {value: 1, done: false}
+g.next() // -&gt; {value: 2, done: false</code></pre><p>接下来看下 Generator 函数如何用于异步</p>
+<pre><code>function getFirstName() {
+  setTimeout(function() {
+    gen.next(&apos;alex&apos;)
+  }, 1000)
+}
+
+function getSecondName() {
+  setTimeout(function() {
+    gen.next(&apos;perry&apos;)
+  }, 2000)
+}
+
+function* sayHello() {
+  var a = yield getFirstName()
+  var b = yield getSecondName()
+  // settimeout 本来是异步的，通过 Generator 函数写成了同步写法
+  console.log(a, b) // -&gt;alex perry
+}
+
+var gen = sayHello()
+
+gen.next()</code></pre><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>JS 中的类不是其他语言中的类，只是个语法糖，写法如下。</p>
+<pre><code>class Person {
+  // 构造函数
+  constructor() {
+    this.name = name
+  }
+  sayName() {
+    console.log(this.name)
+  }
+}
+let p = new Person(&apos;name&apos;)
+p.sayName() // -&gt; &apos;name&apos;
+
+// class 就是以下代码的语法糖
+// 对应 constructor
+function Person(name) {
+  this.name = name
+}
+// 对应 sayName
+Person.prototype.sayName = function() {
+  console.log(this.name)
+}</code></pre><p>类声明相比之前的写法有以下几点优点</p>
+<ul>
+<li>类声明和 let 声明一样，有临时死区</li>
+<li>类声明中的代码全部运行在严格模式下</li>
+<li>必须使用 new 调用</li>
+</ul>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>在 ES6 之前写继承很麻烦，既然有个类，那么必然也可以继承类了</p>
+<pre><code>class Person {
+  // 构造函数
+  constructor() {
+    this.name = name
+  }
+  sayName() {
+    console.log(this.name)
+  }
+}
+// extends 代表继承自Person
+class Student extends Person {
+  constructor(name, age) {
+    // super 的注意事项之前有说过
+    super(name)
+    // 必须在 super 之后调用 this
+    this.age = age
+  }
+  sayName() {
+    // 如果像使用父类的方法就使用这个方法使用
+    // 不像使用的话就不写 super，会覆盖掉父类的方法
+    super.sayName(this.name)
+    console.log(this.age)
+  }
+}</code></pre><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>用于异步编程。</p>
+<pre><code>// 你可以使用 new 创建一个 Promise 对象
+let promise = new Promise(function(resolve, reject)) {}
+resole() // 代表成功
+reject() // 代表失败
+promise.then(onFulfilled, onRejected) // 当调用 resole 或者 reject ，then 可以监听到
+promise.catch() // reject 或者 throw时可以监听到</code></pre><p>Promise 有三个状态</p>
+<ul>
+<li>pending，等待状态，也就是既不是 resolve 也不是 reject 状态</li>
+<li>fulfilled，resolve 以后进入这个状态</li>
+<li>reject，reject 以后进入这个状态</li>
+</ul>
+<h3 id="一般使用情况"><a href="#一般使用情况" class="headerlink" title="一般使用情况"></a>一般使用情况</h3><pre><code>function delay() {
+  // 创建一个 promise
+  return new Promise((resolve, reject) =&gt; {
+    // 当调用 promise 时，里面的内容会立即执行
+    console.log(&apos;in delay&apos;)
+    setTimeout(() =&gt; {
+      resolve(1)
+    }, 1000)
+  })
+}
+function otherDelay() {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      reject(1)
+    }, 1000)
+  })
+}
+// 这里会先输出 delay 函数中的 log，然后再输出 outer，接下来1秒以后输出3个1
+delay()
+  // then 可以捕获 resolve 和 reject
+  .then(value =&gt; {
+    console.log(value)
+  })
+console.log(&apos;outer&apos;)
+
+otherDelay()
+  // 捕获 reject时，如果不需要捕获 resolve 时可以这样写
+  .then(null, value =&gt; {
+    console.log(value)
+  })
+// 捕获 reject 或者 throw 时推荐使用这个写法，原因后面会说
+otherDelay().catch(value =&gt; {
+  console.log(value)
+})</code></pre><p>以上是最常用的 Promise 写法，现在介绍 Promise 链</p>
+<pre><code>delay()
+  // then 会返回一个新的 promise 对象
+  .then(value =&gt; {
+    // 这样就可以传参了
+    return value + 1
+  })
+  .then(value =&gt; {
+    console.log(value) // -&gt; 2
+    // then 里面可以也可以传入一个函数名，会自动调用
+    // 如果传入的函数有参数会自动传入
+  })
+  .then(delay)
+  .then(value =&gt; {
+    console.log(value) // -&gt; 1
+    // 如果在then 中抛出错误，只有 catch 才能监听到，所以推荐使用 catch 监听错误
+    throw new Error(&apos;error&apos;)
+  })
+  .then(value =&gt; {
+    console.log(value) // 这个then 不会执行
+  })
+  .catch(error =&gt; {
+    console.log(&apos;catch&apos; + error) // -&gt; catch Error
+  })</code></pre><h3 id="Promise-高级用法"><a href="#Promise-高级用法" class="headerlink" title="Promise 高级用法"></a>Promise 高级用法</h3><p>开发中可能会有需求，需要一次上传几张图片，全部上传成功以后有个提示，这时候就可以用到 <code>Promise.all()</code></p>
+<pre><code>function updateOne() {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      resolve(&apos;one&apos;)
+    }, 1000)
+  })
+}
+function updateTwo() {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      resolve(&apos;two&apos;)
+    }, 2000)
+  })
+}
+// all 函数接收一个可迭代对象，注意这里传入函数必须调用
+let promise = Promise.all([updateOne(), updateTwo()])
+// 只有当 all 中的异步全部完成了才会调用 then
+promise.then(value =&gt; {
+  // value 是个函数，顺序按照 all 里的迭代对象的顺序
+  console.log(value) // -&gt; [&quot;one&quot;, &quot;two&quot;]
+})</code></pre><p>如果一个异步任务超时了，你想直接取消，可以通过 <code>Promise.race()</code></p>
+<pre><code>// 假设该任务执行时间超过1秒就算超时，应该 cancel
+function delay() {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(function() {
+      resolve(&apos;finish&apos;)
+    }, 1500)
+  })
+}
+function cancel() {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(function() {
+      resolve(&apos;cancel&apos;)
+    }, 1000)
+  })
+}
+// 接收的参数和 all 相同
+let promise = Promise.race([delay(), cancel()])
+// race 中只要有一个任务完成，then 就会被调用，这样就可以 cancel 掉所有超时任务
+promise.then(value =&gt; {
+  console.log(value) // -&gt; cancel
+})</code></pre><h2 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h2><p>Proxy 可以创建一个代替目标对象的代理，拦截语言内部的操作。</p>
+<pre><code>let handle = {}
+let target = {}
+// 这样就创建了target 对象的代理，但是这个代理其实没有任何用处
+let p = new Proxy(target, handle)</code></pre><p>上面的代码中可以看到传入了一个 <code>handle</code> 的对象，只有当这个对象中包含一些代理行为的函数时，这个代理才有用。具有的代理行为函数可以去 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener">MDN</a>查看，这里举例几个用法。</p>
+<pre><code>let handle = {
+  // 改变 set 的内部操作
+  set(target, key, value) {
+    // 当给 age 属性赋值小于19时报错
+    console.log(value)
+    if (key === &apos;age&apos;) {
+      if (value &lt; 19) {
+        throw new Error(&apos;未成年&apos;)
+      }
+    }
+  },
+}
+let target = {}
+let p = new Proxy(target, handle)
+p.age = 1 // -&gt; 报错
+p.age = 19 // -&gt; 没问题</code></pre><h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>ES6 引入了原生的模块化，这样就可以抛弃之前的 AMD 或者 CMD 规范了，如果对模块化还没什么了解，可以看下我之前的文章 <a href="https://juejin.im/post/59a575b06fb9a0247c6eee02" target="_blank" rel="noopener">明白 JS 模块化</a>。</p>
+<pre><code>// example.js 文件下
+// export 可以导出任何变量，函数或者类
+export var age = 14
+export function sum(n1, n2) {
+    return n1 + n2
+}
+export class Person {
+    constructor(age) {
+        this.age = age
+    }
+}
+// 别的 JS 文件中导入
+// 如果想导入整个模块并且自己命名，就可以这样使用
+// import 后面代表模块名，from 后面代表要导入的文件地址
+import * as Example from &apos;./example&apos;
+console.log(Example.age) // -&gt; 14
+// 当然你也可以只使用模块中的一个功能
+// 这里使用了对象解构的方法拿到需要的功能，注意这里名字必须相同，否则使用会报错
+import { age, sum } from &apos;./example&apos;
+console.log(age) // -&gt; 14
+console.log(sum(1, 2)) // -&gt; 3
+// 现在我只想导出一个功能，并且外部可以随便命名该如何做呢？
+// default 一个文件中只能使用一次
+export default var age = 14
+// MyAge 可以随便自己喜欢命名
+import MyAge from &apos;./example&apos;
+console.log(MyAge) // -&gt; 14</code></pre>
+        </div>
+    </div>
+    
+        
+    <div class="post__license">
+        <p>
+            <strong>本文作者：ChrAlpha</strong>
+        </p>
+        
+            <p>
+                <strong>
+                    <p>文章默认使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 协议进行许可，使用时请注意遵守协议。</p>
+
+                </strong>
+            </p>
+        
+        
+            <p>
+                <strong>
+                    本文链接：
+                </strong>
+                <a href="https://blog.yanng.io/2018/12/12/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20ES6/">https://blog.yanng.io/2018/12/12/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20ES6/</a>
+            </p>
+        
+    </div>
+ 
+    
+    
+        <div class="post-meta post-footer__meta">
+    <p>
+        最后更新于：2019-02-27
+    </p>
+</div> 
+    
+    
+        <div class="post-cats post-card__cats">
+    
+        <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-cats__link button">前端</a>
+    
+</div>
+
+<div class="post-tags post-card__tags">
+    
+        <a href="/tags/%E5%89%8D%E7%AB%AF/" class="post-tags__link button"># 前端</a>
+    
+</div> 
+     
+</div>
+<br>
+
+
+</main>
+<footer class="footer">
+     
+
+
+     
+  
+    
+        
+            <p>Copyright © 2020 </p>
+
+        
+            <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank" rel="noopener">Cards</a></p>
+
+        
+    
+</footer>
+
+
+        </div>
+        <!-- lazyload -->
+
+    
+        <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@latest/dist/lazyload.min.js"></script>
+    
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazyload",
+            threshold: 0
+        };
+    </script>
+
+
+ 
+
+ 
+
+ 
+
+  
+
+<!-- jQuery -->
+ 
+
+<!-- fancybox -->
+ 
+
+<!-- back to top -->
+ 
+
+
+
+    </body>
+</html>
